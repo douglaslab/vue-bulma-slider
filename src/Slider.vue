@@ -94,7 +94,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~bulma/sass/utilities/variables';
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/derived-variables';
+@import '~bulma/sass/utilities/functions';
+
 
 input[type=range].slider {
   $radius: 290486px;
@@ -123,7 +126,7 @@ input[type=range].slider {
   // width: 100%;
   cursor: pointer;
   outline: none;
-  background: $border;
+  background: $grey-lighter;
   -webkit-tap-highlight-color: transparent;
 
   &:focus {
@@ -214,7 +217,7 @@ input[type=range].slider {
   }
 
   // Colors
-  @each $name, $pair in $colors {
+  @each $name, $pair in ('white': ($white, $black), 'black': ($black, $white), 'light': ($light, $light-invert), 'dark': ($dark, $dark-invert), 'primary': ($primary, $primary-invert), 'info': ($info, $info-invert), 'success': ($success, $success-invert), 'warning': ($warning, $warning-invert), 'danger': ($danger, $danger-invert)) {
     $color: nth($pair, 1);
     &.is-#{$name} {
       &::-webkit-slider-thumb {
@@ -251,7 +254,7 @@ input[type=range].slider {
     left: 0;
 
     // Colors
-    @each $name, $pair in $colors {
+    @each $name, $pair in ('white': ($white, $black), 'black': ($black, $white), 'light': ($light, $light-invert), 'dark': ($dark, $dark-invert), 'primary': ($primary, $primary-invert), 'info': ($info, $info-invert), 'success': ($success, $success-invert), 'warning': ($warning, $warning-invert), 'danger': ($danger, $danger-invert)) {
       $color: nth($pair, 1);
       &.is-#{$name} {
         &::-webkit-slider-thumb {
